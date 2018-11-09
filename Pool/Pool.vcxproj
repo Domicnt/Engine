@@ -69,7 +69,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\dbert\Downloads\SDL2-2.0.8-win32-x64;C:\Users\dbert\Downloads\SDL2_image-2.0.3-win32-x86;C:\Users\dbert\source\repos\Pool\Pool\SDL .h Files;C:\Users\dbert\source\repos\Pool\SDL Dependancies;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\dbert\Downloads\SDL2-devel-2.0.8-VC;C:\Users\dbert\Downloads\SDL2_image-devel-2.0.3-VC;C:\Users\dbert\source\repos\Pool\Pool\SDL .h Files;C:\Users\dbert\source\repos\Pool\SDL Dependancies;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -77,6 +80,10 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -115,6 +122,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Collision.cpp" />
+    <ClCompile Include="..\Cursor.cpp" />
+    <ClCompile Include="..\Draw.cpp" />
+    <ClCompile Include="..\Initialize.cpp" />
+    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="..\Move.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Collision.h" />
+    <ClInclude Include="..\Cursor.h" />
+    <ClInclude Include="..\Draw.h" />
+    <ClInclude Include="..\Initialize.h" />
+    <ClInclude Include="..\Move.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
