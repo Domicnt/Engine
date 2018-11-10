@@ -11,7 +11,7 @@ Initialize initialize1;
 
 void Cursor::mouseEvent(std::vector<Ball> &Balls, SDL_Event &e) {
 	if (e.button.button == SDL_BUTTON_LEFT) {
-		for (int i = 0; i < 50000; i++) {
+		for (int i = 0; i < 5; i++) {
 			initialize1.createRandomBall(Balls);
 		}
 	} else if (e.button.button == SDL_BUTTON_RIGHT) {
