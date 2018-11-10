@@ -43,8 +43,6 @@ class Collision{
 
 		void BallvsLine(Ball &a, Line &b);
 
-		//bool onGround(Ball &a);
-
 		float restitution;
 
 		int maxSpeed = 10;

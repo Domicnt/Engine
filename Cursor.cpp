@@ -6,12 +6,16 @@
 #include "Cursor.h"
 #include "Initialize.h"
 #include <vector>
+#include <cstdio>
 Initialize initialize1;
 
 void Cursor::mouseEvent(std::vector<Ball> &Balls, SDL_Event &e) {
 	if (e.button.button == SDL_BUTTON_LEFT) {
-		initialize1.createRandomBall(Balls);
+		for (int i = 0; i < 50000; i++) {
+			initialize1.createRandomBall(Balls);
+		}
 	} else if (e.button.button == SDL_BUTTON_RIGHT) {
+		printf("There were %d balls.\n", Balls.size());
 		Balls.clear();
 	}
 }

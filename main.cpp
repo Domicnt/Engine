@@ -33,8 +33,8 @@ int main(int argc, char args[]) {
 
 	for (int i = 0; i < 5; i++) {
 		initialize.createRandomBall(Balls);
-		initialize.createRandomLine(Lines);
 	}
+	initialize.createRandomLine(Lines);
 
 	bool quit = false;
 	while (!quit) {

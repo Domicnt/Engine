@@ -60,7 +60,7 @@ void Initialize::createBall(std::vector<Ball> &Balls, int radius, float posX, fl
 void Initialize::createRandomBall(std::vector<Ball> &Balls) {
 	Ball newBall;
 
-	newBall.radius = 5 + (rand() % 20 ) + 1;
+	newBall.radius = 5 + (rand() % 45 ) + 1;
 	newBall.posX = (float)round(newBall.radius + (rand() % SCREEN_WIDTH - 2 * newBall.radius) + 1);
 	newBall.posY = (float)round(newBall.radius + (rand() % SCREEN_HEIGHT - 2 * newBall.radius) + 1);
 	newBall.velocity.x = (float)round((rand() % 20) + 1) - 10;

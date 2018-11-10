@@ -40,7 +40,7 @@ void Collision::BallsvsEdges(Ball &a) {
 		a.posY = (float)round(SCREEN_HEIGHT - a.radius);
 		a.velocity.y *= -a.restitution;
 	} else if (a.posY - a.radius <= 0) {
-		a.posY = (float)round(a.radius);
+		a.posY = (float)round(a.radius );
 		a.velocity.y *= -1;
 	}
 }
