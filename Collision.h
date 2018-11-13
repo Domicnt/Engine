@@ -16,9 +16,7 @@ struct Vector {
 struct Ball {
 	int radius;
 
-	float posX;
-	float posY;
-
+	float posX, posY;
 	Vector velocity;
 
 	int mass;
@@ -35,7 +33,8 @@ struct Line {
 class Collision{
 
 	public:
-		std::vector<bool> collidingBalls;
+		//std::vector<bool> collidingBalls;
+		int selectedBall;
 
 		void BallsvsBalls(std::vector<Ball> &Balls, int a);
 

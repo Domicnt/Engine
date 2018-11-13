@@ -59,15 +59,33 @@ void Initialize::createBall(std::vector<Ball> &Balls, int radius, float posX, fl
 
 void Initialize::createRandomBall(std::vector<Ball> &Balls) {
 	Ball newBall;
+	bool acceptableLocation = false;
 
-	newBall.radius = 5 + (rand() % 45 ) + 1;
-	newBall.posX = (float)round(newBall.radius + (rand() % SCREEN_WIDTH - 2 * newBall.radius) + 1);
-	newBall.posY = (float)round(newBall.radius + (rand() % SCREEN_HEIGHT - 2 * newBall.radius) + 1);
+	while (acceptableLocation == false) {
+
+		newBall.radius = 5 + (rand() % 45) + 1;
+		newBall.posX = (float)round(newBall.radius + (rand() % SCREEN_WIDTH - 2 * newBall.radius) + 1);
+		newBall.posY = (float)round(newBall.radius + (rand() % SCREEN_HEIGHT - 2 * newBall.radius) + 1);
+		if (Balls.size() != 0) {
+			for (unsigned short int i = 0; i < Balls.size(); i++) {
+				float distance = (float)round(pow((Balls[i].posX - newBall.posX), 2) + pow((Balls[i].posY - newBall.posY), 2));
+				float r = (float)round(pow(newBall.radius + Balls[i].radius, 2));
+				printf("Distance: %f\n", distance);
+				printf("R: %f\n", r);
+				printf("There are now: %d Balls\n\n", Balls.size() + 1);
+				if (r <= distance) {
+					acceptableLocation = true;
+				}
+			}
+		} else if (Balls.size() == 0) {
+			acceptableLocation = true;
+		}   
+	}
 	newBall.velocity.x = (float)round((rand() % 20) + 1) - 10;
 	newBall.velocity.y = (float)round((rand() % 20) + 1) - 10;
 	newBall.mass = 10;
 	newBall.restitution = .75;
-
+	
 	Balls.push_back(newBall);
 }
 

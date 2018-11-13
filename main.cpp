@@ -31,10 +31,12 @@ int main(int argc, char args[]) {
 
 	srand((unsigned)time(0));
 
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 3; i++) {
 		initialize.createRandomBall(Balls);
 	}
-	initialize.createRandomLine(Lines);
+	//initialize.createBall(Balls, 175, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0, 0, 0);
+	//initialize.createRandomLine(Lines);
+	//initialize.createLine(Lines, 0, 0, 100, 360);
 
 	bool quit = false;
 	while (!quit) {
@@ -45,14 +47,20 @@ int main(int argc, char args[]) {
 			{
 				quit = true;
 			}
-			if (e.type == SDL_MOUSEBUTTONDOWN) {
-				cursor.mouseEvent(Balls, e);
-			}
+			//if (e.type == SDL_MOUSEBUTTONDOWN) {
+				
+			//}
 		}
 		SDL_SetRenderDrawColor(initialize.renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 		SDL_RenderClear(initialize.renderer);
+		cursor.mouseEvent(Balls, e);
+		if (cursor.mouseButtonsHeld[0] == true && collision.selectedBall != NULL) {
+			Balls[collision.selectedBall].posX = cursor.mousePosX;
+			printf("\nyeet: %f\n", cursor.mousePosX);
+			Balls[collision.selectedBall].posY = cursor.mousePosY;
+		}
 		for (unsigned short int i = 0; i < Balls.size(); i++) {
-			//collision.BallsvsBalls(Balls, i);
+			collision.BallsvsBalls(Balls, i);
 			collision.BallsvsEdges(Balls[i]);
 			
 			move.moveBall(Balls[i]);

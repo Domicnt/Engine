@@ -5,16 +5,15 @@
 #include <stdio.h>
 #include <vector>
 #include "Collision.h"
+#include "Cursor.h"
 #include "Move.h"
 using namespace std;
 
 Collision collision1;
+Cursor cursor1;
 
 void Move::moveBall(Ball &a) {
-	a.velocity.y += .2;
-	if (a.posY + a.radius >= SCREEN_HEIGHT) {
-		a.velocity.x *= .75;
-	}
+	//a.velocity.y += .2;
 
 	if (a.velocity.x > collision1.maxSpeed) {
 		a.velocity.x = (float)round(collision1.maxSpeed);
